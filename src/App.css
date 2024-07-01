@@ -1,0 +1,309 @@
+/* PALETTE
+AZZURRO: #1568BF
+BLU CHIARO: #0268BF
+BLU SCURO: #001C38
+GIALLO: #FFD92C */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #001c38;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #00244d;
+  padding-block: 1.5rem;
+}
+.nav-links {
+  display: flex;
+  flex-grow: 0.3;
+  justify-content: space-around;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+}
+
+a:hover {
+  color: #ffd92c;
+}
+
+.button {
+  background-color: #ffd92c;
+  padding-inline: 1rem;
+  padding-block: 0.2rem;
+  border: none;
+}
+.button a {
+  color: #00244d;
+  font-weight: 500;
+}
+
+/* dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background-color: #00244d;
+  border: none;
+  color: white;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 0%;
+  border: none;
+  z-index: 1;
+  padding-block: 0;
+  margin-top: 0.5rem;
+}
+
+.dropdown-item {
+  background-color: #00244d;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-item:hover {
+  color: #ffd92c;
+  background-color: #0268bf;
+}
+
+.dropdown-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+/* ASIDE */
+/* Search Widget */
+.search-widget {
+  margin-top: 20px;
+}
+
+/* Search Form */
+.search-form {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.search-input {
+  padding: 4px;
+  border: 1px solid #ccc;
+  flex-shrink: 100;
+  /* border-radius: 4px; */
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+/* Search Results */
+.search-results ul {
+  list-style: none;
+  padding: 0;
+}
+
+.search-results li {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* HOMEPAGE */
+
+.title {
+  color: #0268bf;
+  font-weight: bold;
+  margin-bottom: 0%;
+  line-height: 0.7;
+}
+.underline {
+  background-color: #0268bf;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+}
+/* Film Library */
+.film-library {
+  margin-top: 20px;
+}
+
+.film-col {
+  padding: 10px;
+}
+
+.film-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+}
+
+.film-card:hover {
+  transform: scale(1.01);
+}
+
+/* Show Button */
+.show-button {
+  display: none;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: #ffd92c;
+  padding-inline: 1rem;
+  padding-block: 0.2rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 1s;
+}
+
+.film-card:hover .show-button {
+  display: block;
+  opacity: 1;
+}
+
+.show-button:hover {
+  background-color: #0056b3;
+  color: #ffd92c;
+}
+
+.film-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.film-title {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* MOVIEDETAILS */
+.carousel-container {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden; /* Nasconde gli elementi che escono fuori dal contenitore */
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Adatta l'immagine coprendo l'intero contenitore */
+  object-position: center; /* Centra l'immagine */
+}
+
+.prova {
+  position: relative;
+}
+
+.cover {
+  position: absolute;
+  transform: translateY(-30%);
+  z-index: 10;
+}
+
+.ratings {
+  display: flex;
+  justify-content: space-between;
+}
+
+.moreinfo {
+  margin-top: 2rem;
+}
+
+/* OFFERTE */
+.offerte-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.offerta-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.offerta-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.offerta-content h2 {
+  margin: 0 0 10px 0;
+}
+
+.offerta-content p {
+  margin: 0;
+}
+
+/* CINEMA PAGE */
+.img {
+  width: 90px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  vertical-align: bottom;
+}
+td {
+  border-bottom: 1px solid #ccc;
+}
+
+.schedule-cell {
+  position: relative;
+}
+
+.schedule-info {
+  position: relative;
+  padding: 8px;
+}
+
+.buy-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: none;
+}
+
+.schedule-cell:hover .buy-button {
+  display: block;
+}
