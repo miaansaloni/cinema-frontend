@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -6,41 +6,26 @@ import Col from "react-bootstrap/Col";
 import Aside from "../components/Aside";
 import Ads from "../components/Ads";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const HomePage = () => {
+  const [movies, setMovies] = useState([]);
   const [hoveredMovie, setHoveredMovie] = useState(null);
   const navigate = useNavigate();
 
-  const movies = [
-    {
-      id: 1,
-      title: "Movie 1",
-      image: "https://placedog.net/200/300",
-    },
-    {
-      id: 2,
-      title: "Movie 2",
-      image: "https://placedog.net/200/300",
-    },
-    {
-      id: 3,
-      title: "Movie 3",
-      image: "https://placedog.net/200/300",
-    },
-    {
-      id: 4,
-      title: "Movie 4",
-      image: "https://placedog.net/200/300",
-    },
-    {
-      id: 5,
-      title: "Movie 5",
-      image: "https://placedog.net/200/300",
-    },
-  ];
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/v1/movies")
+      .then((response) => {
+        setMovies(response.data);
+      })
+      .catch((error) => {
+        console.error("C'è stato un errore nel recupero dei dati dei film:", error);
+      });
+  }, []);
 
   const handleShowClick = (movieId) => {
-    navigate(`/movie-details/${movieId}`);
+    navigate(`/movies/${movieId}`);
   };
 
   return (
@@ -52,7 +37,7 @@ const HomePage = () => {
           <img
             className="carousel-image"
             src="https://backend.ucicinemas.tools/storage/adv-management/leaderboard//HnRYDY2EO7OdDIzQDN23259lGimbQGompll3vHF2.jpg"
-            alt=""
+            alt="First slide"
           />
           <Carousel.Caption>
             <h3>First slide label</h3>
@@ -63,7 +48,7 @@ const HomePage = () => {
           <img
             className="carousel-image"
             src="https://backend.ucicinemas.tools/storage/adv-management/leaderboard//oZAjLxzcQEqwxTBBPwIZ2ztWcz9MQi21azOFjNrJ.jpg"
-            alt=""
+            alt="Second slide"
           />
           <Carousel.Caption>
             <h3>Second slide label</h3>
@@ -89,7 +74,7 @@ const HomePage = () => {
                     onMouseEnter={() => setHoveredMovie(movie.id)}
                     onMouseLeave={() => setHoveredMovie(null)}
                   >
-                    <img src={movie.image} alt={movie.title} className="film-image" />
+                    <img src={movie.poster_url} alt={movie.title} className="film-image" />
                     <div className="film-title">{movie.title}</div>
                     <button
                       className={`show-button ${hoveredMovie === movie.id ? "show" : ""}`}

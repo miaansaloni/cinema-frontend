@@ -54,22 +54,18 @@ function App() {
           <Routes>
             {/* rotte accessibili da tutti */}
             <Route path="/" element={<HomePage />} />
-            <Route path="/moviedetails" element={<MovieDetails />} />
-            <Route path="/offerte" element={<Offerte />} />
+            <Route path="/movies/:id" element={<MovieDetails />} /> <Route path="/offerte" element={<Offerte />} />
             <Route path="/premium" element={<Premium />} />
             <Route path="/business" element={<Business />} />
             <Route path="/prenota-una-sala" element={<PrenotaUnaSala />} />
             <Route path="/cinema" element={<CinemaPage />} />
-
             <Route path="/404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" />} />
-
             {/* rotte accessibili solo se NON si è loggati */}
             <Route element={<GuestRoutes />}>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Route>
-
             {/* rotte accessibili solo se si è loggati */}
             <Route element={<ProtectedRoutes />}>
               <Route path="/admin-dashboard" element={<AdminDashboard />} />

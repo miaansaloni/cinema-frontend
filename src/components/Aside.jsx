@@ -1,17 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Col from "react-bootstrap/Col";
+import axios from "axios";
 
 const Aside = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const [theaters, setTheaters] = useState([]);
 
-  // Simula un insieme di dati
-  const data = ["UCI Ferrara", "UCI Bologna", "UCI Verona", "UCI Padova", "UCI Milan", "UCI Rome"];
+  useEffect(() => {
+    // Effettua la chiamata API per ottenere i dati dei cinema
+    axios
+      .get("http://localhost:8000/api/v1/theaters")
+      .then((response) => {
+        setTheaters(response.data);
+      })
+      .catch((error) => {
+        console.error("Errore nel recupero dei dati dei cinema:", error);
+      });
+  }, []);
 
-  // Gestisci la ricerca
+  // Gestisci la ricerca dei cinema
   const handleSearch = (e) => {
     e.preventDefault();
-    const filteredResults = data.filter((item) => item.toLowerCase().includes(query.toLowerCase()));
+    const filteredResults = theaters.filter((theater) => theater.name.toLowerCase().includes(query.toLowerCase()));
     setResults(filteredResults);
   };
 
@@ -39,20 +50,35 @@ const Aside = () => {
             <ul>
               {results.map((result, index) => (
                 <li key={index}>
-                  <a href="/">{result}</a>
+                  <a href="/">{result.name}</a>
+                  <p>
+                    {result.address}, {result.city}, {result.region}
+                  </p>
                 </li>
               ))}
             </ul>
           </div>
         )}
-        <h4>EMILIA ROMAGNA</h4>
-        <p>UCI Ferrara</p>
-        <p>UCI Bologna</p>
-        <hr />
-        <h4>VENETO</h4>
-        <p>UCI Verona</p>
-        <p>UCI Padova</p>
-        <hr />
+
+        {/* Lista di cinema per regione */}
+        {theaters.length > 0 && (
+          <>
+            <h4>EMILIA ROMAGNA</h4>
+            {theaters
+              .filter((theater) => theater.region === "Emilia Romagna")
+              .map((theater) => (
+                <p key={theater.id}>{theater.name}</p>
+              ))}
+            <hr />
+            <h4>VENETO</h4>
+            {theaters
+              .filter((theater) => theater.region === "Veneto")
+              .map((theater) => (
+                <p key={theater.id}>{theater.name}</p>
+              ))}
+            <hr />
+          </>
+        )}
       </div>
     </Col>
   );
