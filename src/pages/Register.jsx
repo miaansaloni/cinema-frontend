@@ -10,8 +10,8 @@ const Register = () => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
+    name: "",
+    surname: "",
     birthday: "",
     email: "",
     password: "",
@@ -63,29 +63,29 @@ const Register = () => {
 
           <form onSubmit={submitRegister} noValidate>
             <div className="mb-3">
-              <label htmlFor="first_name" className="form-label">
+              <label htmlFor="name" className="form-label">
                 First Name:
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="first_name"
-                name="first_name"
-                value={formData.first_name}
+                id="name"
+                name="name"
+                value={formData.name}
                 onChange={(ev) => updateInputValue(ev)}
                 required
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="last_name" className="form-label">
+              <label htmlFor="surname" className="form-label">
                 Last Name:
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="last_name"
-                name="last_name"
-                value={formData.last_name}
+                id="surname"
+                name="surname"
+                value={formData.surname}
                 onChange={(ev) => updateInputValue(ev)}
                 required
               />

@@ -34,7 +34,7 @@ const Login = () => {
     ev.preventDefault();
     setLoading(true);
     axios
-      .get("/sanctum/csrf-cookie")
+      .get("http://localhost:8000/sanctum/csrf-cookie")
       .then(() => axios.post("/login", formData))
       .then((res) => {
         return axios.get("/api/user");

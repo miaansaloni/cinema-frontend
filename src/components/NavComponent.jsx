@@ -60,12 +60,12 @@ const NavComponent = () => {
       {user ? (
         user.user_type === "user" ? (
           <>
-            <Link to="/profile">{user.first_name}</Link>
+            <Link to="/profile">{user.name}</Link>
             <button onClick={logout}>Logout</button>
           </>
         ) : user.user_type === "admin" ? (
           <>
-            <p>{user.first_name}</p>
+            <p>{user.name}</p>
             <button onClick={logout}>Logout</button>
           </>
         ) : null

@@ -24,15 +24,18 @@ import ProtectedRoutes from "./pages/ProtectedRoutes";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProfilePage from "./pages/ProfilePage";
 
-function App() {
-  axios.defaults.withCredentials = true;
-  axios.defaults.withXSRFToken = true;
+// Configura axios con la baseURL
+axios.defaults.baseURL = process.env.REACT_APP_API_URL || "http://localhost:8000"; // fallback se REACT_APP_API_URL non è definito
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
 
+function App() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    axios("/api/user")
+    axios
+      .get("/api/user")
       .then((res) =>
         dispatch({
           type: LOGIN,
