@@ -107,14 +107,8 @@ a:hover {
 }
 
 .search-input {
-  padding: 4px;
   border: 1px solid #ccc;
-  flex-shrink: 100;
-  /* border-radius: 4px; */
-}
-
-.search-button:hover {
-  background-color: #0056b3;
+  min-width: 20px;
 }
 
 /* Search Results */
@@ -203,25 +197,23 @@ a:hover {
 /* MOVIEDETAILS */
 .carousel-container {
   width: 100%;
-  max-height: 500px;
-  overflow: hidden; /* Nasconde gli elementi che escono fuori dal contenitore */
+  max-height: 300px;
+  overflow: hidden;
 }
 
 .carousel-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Adatta l'immagine coprendo l'intero contenitore */
-  object-position: center; /* Centra l'immagine */
+  object-fit: cover;
+  object-position: center;
 }
 
-.prova {
-  position: relative;
+.movieposter {
+  width: 100%;
 }
 
-.cover {
-  position: absolute;
-  transform: translateY(-30%);
-  z-index: 10;
+.trailer {
+  transform: translateY(200%);
 }
 
 .ratings {
@@ -231,6 +223,64 @@ a:hover {
 
 .moreinfo {
   margin-top: 2rem;
+}
+
+/* Tag genres */
+/* Generale */
+.genre-tag {
+  display: inline-block;
+  color: white;
+  border-radius: 5px;
+  padding: 2px 8px;
+  margin: 2px;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+/* Colori specifici per ciascun genere */
+.genre-action {
+  background-color: #ff5733; /* Arancione intenso */
+}
+
+.genre-comedy {
+  background-color: #ffc300; /* Giallo oro */
+}
+
+.genre-drama {
+  background-color: #c70039; /* Rosso intenso */
+}
+
+.genre-sci-fi {
+  background-color: #900c3f; /* Viola scuro */
+}
+
+.genre-thriller {
+  background-color: #581845; /* Viola melanzana */
+}
+
+.genre-horror {
+  background-color: #343a40; /* Grigio scuro */
+}
+
+.genre-romance {
+  background-color: #ff1493; /* Rosa intenso */
+}
+
+.genre-adventure {
+  background-color: #007bff; /* Blu intenso */
+}
+
+.genre-fantasy {
+  background-color: #6f42c1; /* Viola medio */
+}
+
+.genre-animation {
+  background-color: #17a2b8; /* Blu acqua */
+}
+
+.genre-documentary {
+  background-color: #28a745; /* Verde brillante */
 }
 
 /* OFFERTE */
@@ -306,4 +356,9 @@ td {
 
 .schedule-cell:hover .buy-button {
   display: block;
+}
+
+.showtimes-list {
+  display: flex;
+  justify-content: space-between;
 }

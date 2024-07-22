@@ -23,6 +23,7 @@ import GuestRoutes from "./pages/GuestRoutes";
 import ProtectedRoutes from "./pages/ProtectedRoutes";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProfilePage from "./pages/ProfilePage";
+import Reservation from "./pages/Reservation";
 
 // Configura axios con la baseURL
 axios.defaults.baseURL = process.env.REACT_APP_API_URL || "http://localhost:8000"; // fallback se REACT_APP_API_URL non è definito
@@ -54,13 +55,16 @@ function App() {
           <Routes>
             {/* rotte accessibili da tutti */}
             <Route path="/" element={<HomePage />} />
-            <Route path="/movies/:id" element={<MovieDetails />} /> <Route path="/offerte" element={<Offerte />} />
+            <Route path="/movies/:id" element={<MovieDetails />} />
+            <Route path="/offerte" element={<Offerte />} />
             <Route path="/premium" element={<Premium />} />
             <Route path="/business" element={<Business />} />
             <Route path="/prenota-una-sala" element={<PrenotaUnaSala />} />
-            <Route path="/cinema" element={<CinemaPage />} />
+            <Route path="/theaters/:theaterId" element={<CinemaPage />} />
+            <Route path="/reservation/:showtimeId" element={<Reservation />} />
             <Route path="/404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" />} />
+
             {/* rotte accessibili solo se NON si è loggati */}
             <Route element={<GuestRoutes />}>
               <Route path="/login" element={<Login />} />
